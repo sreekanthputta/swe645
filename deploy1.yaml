@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: swe645p2
-        image: gcr.io/swe645-270922/test:v1
+        image: swe645aspsr/assignment2swe645aspsr
         ports:
         - containerPort: 80
         imagePullPolicy: Always
