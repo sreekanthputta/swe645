@@ -17,3 +17,14 @@ spec:
         ports:
         - {name: uiport, containerPort: 4200}
         imagePullPolicy: Always
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: proj3ui-service
+  labels: {app.kubernetes.io/managed-by: graphite-jenkins-gke}
+spec:
+  selector: {app: proj3ui}
+  ports:
+  - {name: ui, protocol: TCP, port: 4300, targetPort: 4200}
+  type: LoadBalancer

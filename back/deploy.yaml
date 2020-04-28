@@ -17,4 +17,14 @@ spec:
         ports:
         - {name: tomcat, containerPort: 8080}
         imagePullPolicy: Always
-
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: proj3rest-service
+  labels: {app.kubernetes.io/managed-by: graphite-jenkins-gke}
+spec:
+  selector: {app: proj3rest}
+  ports:
+  - {name: tomcat, protocol: TCP, port: 8300, targetPort: 8080}
+  type: LoadBalancer
