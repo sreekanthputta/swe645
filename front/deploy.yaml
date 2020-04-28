@@ -21,7 +21,7 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: proj3ui-service
+  name: proj3rest-service
   labels: {app.kubernetes.io/managed-by: graphite-jenkins-gke}
 spec:
   selector: {app: proj3ui}
