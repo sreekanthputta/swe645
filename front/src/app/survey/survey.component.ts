@@ -26,7 +26,7 @@ export class SurveyComponent implements OnInit {
   onSubmit(){
     this.record.likedAboutCampus = Object.keys(this.likedAboutCampus).filter((k:any) => this.likedAboutCampus[k]).toString();
     console.log(this.record);
-    this.http.post<any>("http://35.236.250.4:8300/rest/webapi/api/putRecord",this.record,this.httpOptions).subscribe(data=>{
+    this.http.post<any>("http://35.222.71.15:8300/rest/webapi/api/putRecord",this.record,this.httpOptions).subscribe(data=>{
     alert("Record added");
       this.router.navigate(['/list']);
     });
