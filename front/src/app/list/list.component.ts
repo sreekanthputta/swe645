@@ -13,7 +13,7 @@ export class ListComponent implements OnInit {
 
 
   ngOnInit(): void {
-    this.http.get<any>('http://35.202.142.218:8300/restapi/webapi/api/getRecords').subscribe(data => {
+    this.http.get<any>('http://35.222.71.15/:8300/restapi/webapi/api/getRecords').subscribe(data => {
     this.list = data;
     })
   }
