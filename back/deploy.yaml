@@ -27,5 +27,4 @@ spec:
   selector: {app: proj3rest}
   ports:
   - {name: tomcat, protocol: TCP, port: 8300, targetPort: 8080}
-  - {name: ui, protocol: TCP, port: 4300, targetPort: 4200}
   type: LoadBalancer
