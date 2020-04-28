@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: proj3ui-deployment
+  labels: {app.kubernetes.io/managed-by: graphite-jenkins-gke}
+spec:
+  replicas: 1
+  selector:
+    matchLabels: {app: proj3ui}
+  template:
+    metadata:
+      labels: {app: proj3ui}
+    spec:
+      containers:
+      - name: proj3ui
+        image: sreekanthputta/front
+        ports:
+        - {name: uiport, containerPort: 4200}
+        imagePullPolicy: Always
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: proj3ui-service
+  labels: {app.kubernetes.io/managed-by: graphite-jenkins-gke}
+spec:
+  selector: {app: proj3ui}
+  ports:
+  - {name: ui, protocol: TCP, port: 4300, targetPort: 4200}
+  type: LoadBalancer

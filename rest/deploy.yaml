@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: proj3rest-deployment
+  labels: {app.kubernetes.io/managed-by: graphite-jenkins-gke}
+spec:
+  replicas: 1
+  selector:
+    matchLabels: {app: proj3rest}
+  template:
+    metadata:
+      labels: {app: proj3rest}
+    spec:
+      containers:
+      - name: proj3rest
+        image: sreekanthputta/back
+        ports:
+        - {name: tomcat, containerPort: 8080}
+        imagePullPolicy: Always
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: proj3rest-service
+  labels: {app.kubernetes.io/managed-by: graphite-jenkins-gke}
+spec:
+  selector: {app: proj3rest}
+  ports:
+  - {name: tomcat, protocol: TCP, port: 8300, targetPort: 8080}
+  type: LoadBalancer
